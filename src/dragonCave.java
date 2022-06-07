@@ -1,9 +1,8 @@
-import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class dragonCave {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Random rand = new Random();
         int upperbound = 1 + 1; // did zero to one and added one to make it 1 or 2
         int int_random = rand.nextInt(upperbound);
@@ -16,13 +15,10 @@ public class dragonCave {
         Scanner player = new Scanner(System.in);
         System.out.println("(1 or 2)");
 
-        int playerChoice = 0;
-        try {
-            playerChoice = player.nextInt();
+
+            int playerChoice = player.nextInt(); // players choice
             System.out.println(playerChoice);
-        } catch (InputMismatchException ex) {
-            System.out.println("Please enter a number");
-        }
+
 
         if (playerChoice == int_random) {
             System.out.println("You approach the cave...\nIt is dark and spooky...\nA large dragon jumps out in front of you! He opens his jaws and...\nGobbles you down in one bite!");
