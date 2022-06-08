@@ -3,34 +3,46 @@ import java.util.Scanner;
 
 public class dragonCave {
     public static void main(String[] args) {
+
+        //RANDOM NUMBER GENERATOR OBJECT
         Random rand = new Random();
+
+        //CREATING RANDOM OUTCOME
         int upperbound = 1 + 1; // did zero to one and added one to make it 1 or 2
         int int_random = rand.nextInt(upperbound);
 
 
-        System.out.println("You are in a land full of dragons. \nIn front of you, you see two caves." +
-                "\nIn one cave, the dragon is friendly and will \nshare his treasure with you. The other" +
-                "\ndragon is greedy and hungry and will eat you on sight. \nWhich cave will you go into?");
-
-            Scanner player = new Scanner(System.in);
-            System.out.println("(1 or 2)");
-
-            try {
-                int playerChoice = player.nextInt(); // players choice
-                System.out.println(playerChoice);
+        //USER INPUT OBJECT
+        Scanner player = new Scanner(System.in);
 
 
+        //KEEP ASKING USER FOR VALID RESPONSE
+        boolean valid = false;
+        String string_input = "";
+        while (!valid) {
+            System.out.println("Please enter a number (1 or 2)");
+            string_input = player.nextLine(); // players choice
+            valid = inputValidation.choiceValidation(string_input );
+        }
+
+        int playerChoice = Integer.parseInt(string_input);
+
+        //USER DID NOT CHOOSE 1 OR 2
+        if(playerChoice != 1 || playerChoice != 2)
+        {
+            System.out.println("\nThe queen of the village deemed you indecisive and chose an option for you...");
+        }
 
 
-            if (playerChoice == int_random) {
-                System.out.println("You approach the cave...\nIt is dark and spooky...\nA large dragon jumps out in front of you! He opens his jaws and...\nGobbles you down in one bite!");
+        if (playerChoice == int_random) {
+            //SAFE
+            System.out.println("You approach the cave...\nIt is dark and spooky...\nA large dragon jumps out in front of you! He opens his jaws and...\nGobbles you down in one bite!");
 
-            } else {
-                System.out.println("You approach the cave...\nIt is dark and spooky...\nA large dragon jumps out in front of you! He opens his jaws and...\nWelcomes you to share his treasure");
+        } else {
+            //DIE
+            System.out.println("You approach the cave...\nIt is dark and spooky...\nA large dragon jumps out in front of you! He opens his jaws and...\nWelcomes you to share his treasure");
             }
-            }catch(Exception e) {
-                System.out.println("Please enter a number");
-            }
+
         }
     }
 
